@@ -4,7 +4,6 @@ class NotesController {
   async create(request, response) {
     const { content, created_at } = request.body;
     const user_id = request.user.id;
-    console.log("Esse é o user_id do método create => ", user_id);
 
     const database = await sqliteConnection();
 
@@ -19,7 +18,6 @@ class NotesController {
   async index(request, response) {
     const database = await sqliteConnection();
     const user_id = request.user.id;
-    console.log("Esse é o user_id do método index => ", user_id);
 
     const notes = await database.all("SELECT * FROM notes WHERE user_id = ?", [
       user_id,

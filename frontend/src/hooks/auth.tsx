@@ -65,7 +65,7 @@ function AuthProvider({ children }: AuthProviderProps) {
   function signOut() {
     localStorage.removeItem("@notes:token");
     localStorage.removeItem("@notes:user");
-
+    api.defaults.headers.common["Authorization"] = undefined;
     setData(null);
   }
 

@@ -20,16 +20,17 @@ export default function Notes() {
 
   const handleSignOut = () => {
     signOut();
+    setNotes([]);
   };
 
   const newNote = async (content: string) => {
     try {
+      api.defaults.headers.authorization = `Bearer ${token}`;
+
       const response = await api.post("/notes", {
         content: content,
         created_at: new Date().toISOString(),
       });
-
-      api.defaults.headers.authorization = `Bearer ${token}`;
 
       if (response.status >= 200 && response.status < 300) {
         toast.success("Nota criada com sucesso!");
@@ -62,10 +63,18 @@ export default function Notes() {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
+        api.defaults.headers.authorization = `Bearer ${token}`;
+
         const response = await api.get("/notes");
-        setNotes(response.data);
+
+        if (response.status >= 200 && response.status < 300) {
+          setNotes(response.data);
+        }
       } catch (error) {
-        console.error("Error:", error);
+        console.log(error);
+        toast.error(
+          "Ocorreu um erro ao tentar buscar as notas. Por favor, tente novamente."
+        );
       }
     };
 

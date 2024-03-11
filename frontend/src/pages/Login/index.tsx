@@ -38,7 +38,7 @@ export default function Login() {
   const onSubmit = async (data: User) => {
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    signIn({
+    await signIn({
       email: data.email,
       password: data.password,
     });

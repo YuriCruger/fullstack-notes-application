@@ -92,6 +92,7 @@ export default function CreateAccount() {
             <button
               type="button"
               onClick={handleShowPassword}
+              aria-label={!showPassword ? "Mostrar senha" : "Ocultar senha"}
               className="absolute right-3 top-[50%] translate-y-[-50%] cursor-pointer"
             >
               {!showPassword ? <EyeIcon /> : <EyeOffIcon />}

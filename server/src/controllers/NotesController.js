@@ -1,27 +1,28 @@
 const sqliteConnection = require("../database/sqlite");
 
+const NoteRepository = require("../repositories/note/NoteRepository");
+
+const NoteCreateService = require("../services/note/NoteCreateService");
+
 class NotesController {
   async create(request, response) {
     const { content, created_at } = request.body;
     const user_id = request.user.id;
 
-    const database = await sqliteConnection();
+    const noteRepository = new NoteRepository();
 
-    await database.run(
-      "INSERT INTO notes (content, created_at, user_id ) VALUES (?, ?, ?)",
-      [content, created_at, user_id]
-    );
+    const noteCreateService = new NoteCreateService(noteRepository);
+
+    await noteCreateService.execute({ content, created_at, user_id });
 
     return response.status(201).json();
   }
 
   async index(request, response) {
-    const database = await sqliteConnection();
     const user_id = request.user.id;
 
-    const notes = await database.all("SELECT * FROM notes WHERE user_id = ?", [
-      user_id,
-    ]);
+    const noteRepository = new NoteRepository();
+    const notes = await noteRepository.findByUserId(user_id);
 
     return response.json(notes);
   }
@@ -29,11 +30,10 @@ class NotesController {
   async delete(request, response) {
     const { id } = request.body;
 
-    const database = await sqliteConnection();
+    const noteRepository = new NoteRepository();
+    const notes = await noteRepository.deleteById(id);
 
-    await database.run("DELETE FROM notes WHERE id = ?", [id]);
-
-    return response.status(200).json();
+    return response.status(200).json(notes);
   }
 }
 

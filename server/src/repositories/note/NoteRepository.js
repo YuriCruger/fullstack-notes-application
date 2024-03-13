@@ -12,7 +12,7 @@ class NoteRepository {
     return { id: noteId };
   }
 
-  async findByUserId() {
+  async findByUserId(user_id) {
     const database = await sqliteConnection();
 
     const notes = await database.all("SELECT * FROM notes WHERE user_id = ?", [
@@ -21,7 +21,7 @@ class NoteRepository {
     return notes;
   }
 
-  async deleteById() {
+  async deleteById(id) {
     const database = await sqliteConnection();
 
     const noteDelete = await database.run("DELETE FROM notes WHERE id = ?", [

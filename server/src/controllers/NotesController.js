@@ -1,5 +1,3 @@
-const sqliteConnection = require("../database/sqlite");
-
 const NoteRepository = require("../repositories/note/NoteRepository");
 
 const NoteCreateService = require("../services/note/NoteCreateService");

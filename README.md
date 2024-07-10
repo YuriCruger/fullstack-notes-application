@@ -1,9 +1,10 @@
-# Notes - Full Stack Application
+# Notas - Aplicação Full Stack
 
-This is my first full stack development project. The backend, was built using Node.js, while the user interface, was an adaptation of a prior project I developed during the NLW Expert course.
-The greatest challenge of this project was learning to create a database, as well as implementing functionalities for user creation and authentication. As an addition to the project, I also included automated tests.
+Este é meu primeiro projeto de desenvolvimento full stack. O backend foi construído usando Node.js, enquanto a interface do usuário foi uma adaptação de um projeto anterior que desenvolvi durante o curso NLW Expert.
+Nesse projeto existe um processo de criação de conta e autenticação, além da criação de notas com um diferencial que é o uso da API SpeechRecognition do google que permite criar suas notas pela captação de voz.
+Como um complemento ao projeto, também incluí testes automatizados.
 
-```When trying to log in or register, please wait around 1 minute or more, the backend is hosted on a free service and has this period of inactivity!```
+```Ao tentar fazer login ou registrar-se, por favor, aguarde cerca de 1 minuto ou mais, o backend está hospedado em um serviço gratuito e tem esse período de inatividade!```
 
 [Website](https://notes-yc.vercel.app/) 
 
@@ -15,3 +16,5 @@ The greatest challenge of this project was learning to create a database, as wel
 * TailwindCSS
 * Axios
 * Jest
+
+

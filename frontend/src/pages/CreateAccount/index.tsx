@@ -38,7 +38,9 @@ export default function CreateAccount() {
   }
 
   const onSubmit = async (data: User) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    alert(
+      "O servidor está hospedado em um serviço gratuito. Se estiver inativo, pode demorar alguns minutos para iniciar."
+    );
 
     try {
       await api.post("/users", {

@@ -36,7 +36,9 @@ export default function Login() {
   }
 
   const onSubmit = async (data: User) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    alert(
+      "O servidor está hospedado em um serviço gratuito. Se estiver inativo, pode demorar alguns minutos para iniciar."
+    );
 
     await signIn({
       email: data.email,

@@ -9,5 +9,5 @@ export interface AxiosError extends Error {
 }
 
 export const api = axios.create({
-  baseURL: "https://node-3s0q.onrender.com",
+  baseURL: import.meta.env.VITE_API_BASE_URL,
 });
